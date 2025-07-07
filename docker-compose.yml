@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # MLflow tracking server
   mlflow:
-    image: python:3.9-slim
+    image: python:3.12-slim
     container_name: mlops-mlflow
     working_dir: /app
     volumes:

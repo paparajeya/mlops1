@@ -75,8 +75,8 @@ check_docker_compose() {
 # Create virtual environment
 create_venv() {
     print_status "Creating virtual environment..."
-    if [ ! -d "venv" ]; then
-        python3 -m venv venv
+    if [ ! -d ".venv" ]; then
+        python3 -m venv .venv
         print_success "Virtual environment created"
     else
         print_warning "Virtual environment already exists"
@@ -86,7 +86,7 @@ create_venv() {
 # Activate virtual environment
 activate_venv() {
     print_status "Activating virtual environment..."
-    source venv/bin/activate
+    source .venv/bin/activate
     print_success "Virtual environment activated"
 }
 
@@ -213,6 +213,7 @@ wheels/
 
 # Virtual environments
 venv/
+.venv/
 env/
 ENV/
 
@@ -311,7 +312,7 @@ main() {
     echo "=========================================="
     echo ""
     echo "📋 Next steps:"
-    echo "1. Activate virtual environment: source venv/bin/activate"
+    echo "1. Activate virtual environment: source .venv/bin/activate"
     echo "2. Start MLflow server: mlflow server --host 0.0.0.0 --port 5000"
     echo "3. Train model: python scripts/train.py"
     echo "4. Start API: uvicorn src.api.main:app --host 0.0.0.0 --port 8000"
