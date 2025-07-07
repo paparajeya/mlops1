@@ -37,7 +37,7 @@ check_python() {
         PYTHON_VERSION=$(python3 --version 2>&1 | awk '{print $2}')
         print_success "Python $PYTHON_VERSION found"
     else
-        print_error "Python 3 is not installed. Please install Python 3.8+ first."
+        print_error "Python 3 is not installed. Please install Python 3.12+ first."
         exit 1
     fi
 }

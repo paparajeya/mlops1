@@ -41,7 +41,7 @@ mlops-mnist/
 
 ## 🛠️ Prerequisites
 
-- Python 3.8+
+- Python 3.12+
 - Docker and Docker Compose
 - Git
 - DVC

@@ -34,7 +34,7 @@ This MLOps project demonstrates a complete machine learning pipeline for MNIST d
 
 ### System Requirements
 
-- Python 3.8+
+- Python 3.12+
 - Docker and Docker Compose
 - Git
 - At least 4GB RAM
@@ -42,7 +42,7 @@ This MLOps project demonstrates a complete machine learning pipeline for MNIST d
 
 ### Required Software
 
-1. **Python 3.8+**
+1. **Python 3.12+**
    ```bash
    # Ubuntu/Debian
    sudo apt update
