@@ -1,0 +1,32 @@
+# API Configuration
+server:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false
+  workers: 1
+
+model:
+  path: "models/best_model.pth"
+  device: "cpu"
+  batch_size: 32
+  timeout: 30
+
+security:
+  api_key_header: "X-API-Key"
+  rate_limit: 100  # requests per minute
+  cors_origins: ["*"]
+
+monitoring:
+  enable_metrics: true
+  metrics_port: 9090
+  health_check_interval: 30
+
+logging:
+  level: "INFO"
+  format: "json"
+  file: "logs/api.log"
+
+cache:
+  enable: true
+  ttl: 3600  # seconds
+  max_size: 1000 

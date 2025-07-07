@@ -1,0 +1,67 @@
+stages:
+  download_data:
+    cmd: python scripts/download_data.py
+    deps:
+      - scripts/download_data.py
+      - src/data/
+    outs:
+      - data/mnist/:
+          persist: true
+    metrics:
+      - data/mnist/metrics.json:
+          persist: true
+          cache: false
+
+  preprocess_data:
+    cmd: python scripts/preprocess_data.py
+    deps:
+      - scripts/preprocess_data.py
+      - src/data/
+      - data/mnist/
+    outs:
+      - data/processed/:
+          persist: true
+    metrics:
+      - data/processed/metrics.json:
+          persist: true
+          cache: false
+
+  train_model:
+    cmd: python scripts/train.py
+    deps:
+      - scripts/train.py
+      - src/models/
+      - data/processed/
+    params:
+      - configs/training.yaml
+    outs:
+      - models/:
+          persist: true
+    metrics:
+      - models/metrics.json:
+          persist: true
+          cache: false
+
+  evaluate_model:
+    cmd: python scripts/evaluate_model.py
+    deps:
+      - scripts/evaluate_model.py
+      - src/models/
+      - models/
+      - data/processed/
+    metrics:
+      - models/evaluation_metrics.json:
+          persist: true
+          cache: false
+
+  validate_model:
+    cmd: python scripts/validate_model.py
+    deps:
+      - scripts/validate_model.py
+      - src/models/
+      - models/
+      - data/processed/
+    metrics:
+      - models/validation_metrics.json:
+          persist: true
+          cache: false 
